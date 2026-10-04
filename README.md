@@ -1,26 +1,34 @@
-# small-claude-temp
+# rules
 
-## Prerequisites
+[agent-rules-nix](https://github.com/Hol1kgmg/agent-rules-nix) から参照する共有 agent rules の置き場。
 
-This project uses [mise](https://mise.jdx.dev/) for tool management.
+- `rules/` 直下の `*.md` 1 ファイルが 1 ルール。ID はファイル名から `.md` を除いたもの。
+- frontmatter（Claude Code の `paths:` など）はそのまま配布されるので、ここで書いた通りに利用側へ届く。
 
-If you haven't installed `mise` yet:
+## 利用側の設定
 
-```bash
-# Install mise (macOS)
-brew install mise
-# OR via curl
-curl https://mise.run | sh
+`registry/rules/hol1kgmg.nix`:
 
-# Shell integration (for zsh)
-echo 'eval "$(mise activate zsh)"' >> ~/.zshrc
-source ~/.zshrc
+```nix
+{
+  pin = {
+    type = "github";
+    owner = "Hol1kgmg";
+    repo = "rules";
+    branch = "main";
+  };
+
+  subdir = "rules";
+  idPrefix = "hol1kgmg";
+}
 ```
 
-## Setup
+`rules.nix` に `"hol1kgmg/<ファイル名>"` を列挙し、`nix run .#rules-sources-lock` で rev を固定する。
+
+## 開発
+
+ツールは [mise](https://mise.jdx.dev/) で入れる。pre-commit で gitleaks（シークレット走査）を回す。
 
 ```bash
 mise run setup
 ```
-
-This installs the tools in `mise.toml` and registers the `lefthook` pre-commit hook (gitleaks secret scan).

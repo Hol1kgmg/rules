@@ -1,16 +1,8 @@
 # Project Overview
-{プロジェクトの概要を記述 (例: Dotfiles management project for macOS using Nix and Home-Manager)}
+Shared agent rules (`rules/*.md`) consumed by other repositories via [agent-rules-nix](https://github.com/Hol1kgmg/agent-rules-nix). One file = one rule; the file name is the rule ID. Frontmatter is distributed as-is.
 
 # Setup and Basic Usage
 Setup instructions and basic usage are documented in [README.md](./README.md).
-
-# Directory Structure
-{※ディレクトリ構造のドキュメントが不要な場合はこのセクションごと削除}
-See [{DIRECTORY_STRUCTURE_FILE}.md](./{DIRECTORY_STRUCTURE_FILE}.md) for details.
-
-# Troubleshooting
-{※トラブルシューティングのドキュメントが不要な場合はこのセクションごと削除}
-- Setup and daily usage issues: See [{TROUBLESHOOTING_FILE}.md](./{TROUBLESHOOTING_FILE}.md)
 
 # Work Rules
 1. Propose implementation plan
